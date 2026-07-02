@@ -14,6 +14,8 @@ La plataforma resuelve de manera integral el ecosistema de un comercio gastronó
 * **Estructura:** HTML5 Semántico con nodos dinámicos inyectados vía código (`document.createElement`).
 
 ---
+LINK DEL VIDEO Y PDF: https://drive.google.com/drive/folders/1jcK9JwNpYKl-Jy9-R0CT0KI-9jfNrlWb?usp=sharing
+---
 
 ## 🚀 Requisitos Implementados (Global)
 
