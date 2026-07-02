@@ -1,0 +1,205 @@
+/* ==========================================================================
+   FoodStore - Detalle de Producto: Paso 1 (Layout y Contenedores)
+   ========================================================================== */
+
+/* 1. Contenedor principal que envuelve todo el bloque */
+.detail-container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+/* 2. Botón Volver al Catálogo */
+.volver-container {
+    margin-bottom: 1.5rem;
+}
+
+.btn-secundario {
+    background: none;
+    border: 1px solid #cbd5e1;
+    color: #64748b;
+    padding: 0.6rem 1.2rem;
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-secundario:hover {
+    background-color: #f1f5f9;
+    color: #2b303a;
+    border-color: #94a3b8;
+}
+
+/* 3. La Grilla Principal: Divide en 2 columnas iguales en pantallas grandes */
+.producto-detalle-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 3rem;
+    background-color: #ffffff;
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    align-items: center;
+}
+
+/* 4. Bloque de la Imagen */
+.detalle-imagen {
+    width: 100%;
+    height: 400px;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #f1f5f9;
+}
+
+.detalle-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Mantiene la proporción de la hamburguesa/pizza */
+}
+
+/* ==========================================================================
+   FoodStore - Detalle de Producto: Paso 2 (Textos y Controles)
+   ========================================================================== */
+
+/* 1. Columna derecha de información */
+.detalle-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Etiqueta de la categoría (ej: Hamburguesas, Pizzas) */
+.categoria-tag {
+    align-self: flex-start;
+    background-color: rgba(255, 107, 53, 0.1);
+    color: #ff6b35;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+}
+
+/* Nombre del plato */
+.detalle-info h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2b303a;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+/* Descripción del producto */
+.detalle-info .descripcion {
+    font-size: 1rem;
+    color: #64748b;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+/* Precio destacado */
+.detalle-info .precio-grande {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #ff6b35;
+    margin-bottom: 0.5rem;
+}
+
+/* Información de Stock */
+.detalle-info .stock-info {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin-bottom: 2rem;
+}
+
+.detalle-info .stock-info b {
+    color: #2b303a;
+}
+
+/* 2. Selector de cantidad (- 1 +) */
+.detalle-info .selector-cantidad {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: #f8fafc;
+    padding: 0.5rem 1rem;
+    border-radius: 24px;
+    border: 1px solid #edf2f7;
+    width: fit-content; /* Se ajusta a los botones */
+    margin-bottom: 1.25rem;
+}
+
+/* Botones de control del selector */
+.btn-qty {
+    background: none;
+    border: none;
+    color: #2b303a;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+}
+
+.btn-qty:hover {
+    color: #ff6b35;
+}
+
+/* Número central del contador */
+#contador-cantidad {
+    font-weight: 700;
+    font-size: 1.05rem;
+    min-width: 20px;
+    text-align: center;
+    color: #2b303a;
+}
+
+/* 3. Botón Agregar al Carrito (.btn-principal) o deshabilitado */
+.btn-principal {
+    background-color: #ff6b35;
+    color: #ffffff;
+    border: none;
+    padding: 0.9rem 2rem;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    width: 100%;
+    max-width: 300px; /* Para que no ocupe todo el ancho si la pantalla es gigante */
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.2);
+}
+
+.btn-principal:hover:not(:disabled) {
+    background-color: #e05a2b;
+}
+
+.btn-principal:active:not(:disabled) {
+    transform: scale(0.98);
+}
+
+/* Estado cuando el producto se queda sin stock */
+.btn-principal:disabled {
+    background-color: #cbd5e1;
+    color: #94a3b8;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.sin-stock-mensaje {
+    color: #d32f2f;
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}

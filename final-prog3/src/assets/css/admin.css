@@ -1,0 +1,466 @@
+/* ==========================================================================
+   1. VARIABLES Y CONFIGURACIÓN GENERAL
+   ========================================================================== */
+:root {
+    --primary: #ff6b35;
+    --primary-hover: #e0531f;
+    --text-main: #334155;
+    --text-dark: #1e293b;
+    --text-muted: #64748b;
+    --bg-main: #f8fafc;
+    --border-color: #e2e8f0;
+}
+
+/* ==========================================================================
+   2. ESTRUCTURA Y LAYOUT PRINCIPAL
+   ========================================================================== */
+.admin-dashboard {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 30px;
+    max-width: 1400px;
+    margin: 40px auto;
+    padding: 0 20px;
+    align-items: start;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Responsive para pantallas medianas/chicas */
+@media (max-width: 992px) {
+    .admin-dashboard {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================================================
+   3. SIDEBAR DE NAVEGACIÓN
+   ========================================================================== */
+.sidebar-navigation {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 24px 16px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: sticky;
+    top: 20px;
+}
+
+/* Perfil del Administrador */
+.admin-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 8px 16px 8px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.admin-avatar {
+    font-size: 1.5rem;
+    background: #f1f5f9;
+    padding: 8px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-info h4 {
+    margin: 0;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+}
+
+.admin-info small {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+/* Menú de Ítems interactivos */
+.nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.nav-menu .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    color: #475569;
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    font-weight: 500;
+    font-size: 0.95rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.nav-menu .nav-item:hover {
+    background-color: var(--bg-main);
+    color: var(--primary);
+}
+
+.nav-menu .nav-item.active {
+    background-color: #fff3ed;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.nav-item .icon {
+    font-size: 1.1rem;
+}
+
+.nav-divider {
+    border: 0;
+    border-top: 1px solid var(--border-color);
+    margin: 8px 0;
+}
+
+.btn-sidebar-alta {
+    width: 100%;
+    margin-top: 0;
+}
+
+/* ==========================================================================
+   4. COMPONENTE: TARJETAS DE ANALYTICS (GRANDES)
+   ========================================================================== */
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.tarjeta-stat {
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    text-align: center;
+}
+
+.tarjeta-stat h4 {
+    margin: 0 0 8px 0;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.stat-numero {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+/* Variantes con Gradientes Semánticos */
+.gradiente-categorias { background: linear-gradient(135deg, #6366f1, #4f46e5); color: white; }
+.gradiente-productos { background: linear-gradient(135deg, #ec4899, #db2777); color: white; }
+.gradiente-pedidos { background: linear-gradient(135deg, #06b6d4, #0891b2); color: white; }
+.gradiente-disponibles { background: linear-gradient(135deg, #10b981, #059669); color: white; }
+
+/* Corrección de contraste para los títulos internos de los gradientes */
+.gradiente-categorias h4,
+.gradiente-productos h4,
+.gradiente-pedidos h4,
+.gradiente-disponibles h4,
+.gradiente-categorias .stat-numero,
+.gradiente-productos .stat-numero,
+.gradiente-pedidos .stat-numero,
+.gradiente-disponibles .stat-numero { 
+    color: #ffffff !important; 
+}
+
+/* ==========================================================================
+   5. COMPONENTE: NUEVO RESUMEN RÁPIDO (MODULAR)
+   ========================================================================== */
+.dashboard-resumen {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.resumen-titulo {
+    margin-top: 0;
+    margin-bottom: 1.25rem;
+    color: var(--text-dark);
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* El Grid que faltaba para ordenar las tarjetas horizontalmente */
+.resumen-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+}
+
+.tarjeta-mini {
+    background-color: var(--bg-main);
+    padding: 1.25rem;
+    border-radius: 8px;
+    border-left: 4px solid #cccccc;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tarjeta-mini:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.tarjeta-mini-label {
+    color: var(--text-muted);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.35rem;
+    font-size: 0.85rem;
+}
+
+.tarjeta-mini-valor {
+    font-size: 1.45rem;
+    color: var(--text-dark);
+    display: block;
+}
+
+/* Bordes y colores tipográficos específicos por estado */
+.tarjeta-mini.ingresos { border-left-color: #10b981; }
+.tarjeta-mini.ingresos .tarjeta-mini-valor { color: #10b981; }
+
+.tarjeta-mini.pendientes { border-left-color: #f57c00; }
+.tarjeta-mini.pendientes .tarjeta-mini-valor { color: #f57c00; }
+
+.tarjeta-mini.entregados { border-left-color: #1976d2; }
+.tarjeta-mini.entregados .tarjeta-mini-valor { color: #1976d2; }
+
+.tarjeta-mini.cancelados { border-left-color: #d32f2f; }
+.tarjeta-mini.cancelados .tarjeta-mini-valor { color: #d32f2f; }
+
+/* ==========================================================================
+   6. TABLAS ADMINISTRATIVAS
+   ========================================================================== */
+.tabla-responsiva {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    overflow-x: auto;
+    border: 1px solid var(--border-color);
+}
+
+.tabla-admin {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+.tabla-admin th {
+    background-color: #f8fafc;
+    color: #475569;
+    font-weight: 600;
+    padding: 14px 16px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.tabla-admin td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-main);
+    vertical-align: middle;
+}
+
+.tabla-admin tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+/* Modificadores de Stock interactivos */
+.control-stock {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-stock-mod {
+    background-color: #e2e8f0;
+    border: none;
+    color: var(--text-main);
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.btn-stock-mod:hover {
+    background-color: #cbd5e1;
+}
+
+.stock-valor {
+    font-weight: 700;
+    min-width: 20px;
+    text-align: center;
+}
+
+.select-cambio-estado {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    background-color: #ffffff;
+    font-size: 0.85rem;
+    cursor: pointer;
+    color: var(--text-main);
+}
+
+.select-cambio-estado:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.btn-baja-logica {
+    background-color: #fee2e2;
+    color: #ef4444;
+    border: 1px solid #fca5a5;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-baja-logica:hover {
+    background-color: #ef4444;
+    color: #ffffff;
+    border-color: #ef4444;
+}
+
+.fila-sin-stock {
+    background-color: var(--bg-main);
+    opacity: 0.7;
+}
+
+.fila-sin-stock .stock-valor {
+    color: #ef4444;
+}
+
+/* ==========================================================================
+   7. MODALES / FORMULARIOS FLOTANTES
+   ========================================================================== */
+.modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    width: 100%;
+    max-width: 450px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
+    animation: slideDown 0.3s ease;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 8px;
+}
+
+.modal-header h3 {
+    font-size: 1.25rem;
+    color: var(--text-dark);
+    margin: 0;
+}
+
+.btn-close {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--text-muted);
+}
+
+/* Inputs de Formulario del Modal */
+#form-nuevo-producto {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+#form-nuevo-producto label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+#form-nuevo-producto input,
+#form-nuevo-producto textarea,
+#form-nuevo-producto select {
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    font-size: 0.95rem;
+    color: #334155;
+    background-color: var(--bg-main);
+    transition: all 0.2s ease;
+}
+
+#form-nuevo-producto textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+#form-nuevo-producto input:focus,
+#form-nuevo-producto textarea:focus,
+#form-nuevo-producto select:focus {
+    outline: none;
+    border-color: var(--primary);
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.15);
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* ==========================================================================
+   8. UTILIDADES
+   ========================================================================== */
+.d-none {
+    display: none !important;
+}

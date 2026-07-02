@@ -1,0 +1,377 @@
+/* ==========================================================================
+   FoodStore - Catálogo Paso 1: Layout de Dos Columnas
+   ========================================================================== */
+
+/* 1. Contenedor principal: usa Flexbox para poner la barra lateral y el contenido lado a lado */
+.layaout-container {
+    display: flex;
+    min-height: calc(100vh - 70px); /* Ocupa el alto restante restando el header */
+    width: 100%;
+}
+
+/* 2. Barra lateral (Sidebar) */
+.sidebar {
+    width: 260px;               /* Ancho fijo para las categorías */
+    background-color: var(--bg-card, #ffffff);
+    padding: 2rem 1.5rem;
+    border-right: 1px solid #e2e8f0; /* Línea divisoria sutil */
+}
+
+#menu-categorias h3 {
+    font-size: 1.1rem;
+    color: var(--text-main, #2b303a);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Estilo para los botones de filtrado que actúan como enlaces */
+.btn-filtro {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-muted, #6c757d);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* Efecto cuando pasás el mouse por encima de una categoría */
+.btn-filtro:hover {
+    background-color: #f8fafc;
+    color: #ff6b35; /* Color naranja de tu marca */
+}
+
+/* Categoría que está seleccionada actualmente */
+.btn-filtro.active {
+    background-color: rgba(255, 107, 53, 0.1); /* Fondo naranja muy tenue */
+    color: #ff6b35;
+    font-weight: 600;
+}
+
+/* 3. Zona derecha de contenido principal */
+.main-content {
+    flex: 1; /* Toma todo el espacio sobrante de la pantalla */
+    padding: 2.5rem;
+    background-color: var(--bg-global, #f4f6f9);
+}
+
+/* ==========================================================================
+   FoodStore - Catálogo Paso 2: Buscador, Ordenamiento y Encabezados
+   ========================================================================== */
+
+/* 1. Contenedor de búsqueda: alineamos el input y el select en la misma línea */
+.busqueda-container {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+/* Cuadro de texto para buscar productos */
+#input-busqueda {
+    flex: 1; /* Hace que el buscador ocupe todo el espacio disponible */
+    padding: 0.75rem 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    background-color: #ffffff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#input-busqueda:focus {
+    outline: none;
+    border-color: #ff6b35;
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.15);
+}
+
+/* Selector desplegable para ordenar */
+#select-orden {
+    width: 220px; /* Ancho fijo para el menú de ordenamiento */
+    padding: 0.75rem 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    background-color: #ffffff;
+    color: var(--text-main, #2b303a);
+    cursor: pointer;
+}
+
+#select-orden:focus {
+    outline: none;
+    border-color: #ff6b35;
+}
+
+/* 2. Formato del contador secundario de productos */
+.contador-texto {
+    font-size: 0.9rem;
+    color: var(--text-muted, #6c757d);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+/* 3. Título principal de la sección de productos */
+.main-content h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text-main, #2b303a);
+    margin-bottom: 1.5rem;
+}
+/* ==========================================================================
+   FoodStore - Catálogo Paso 3: Grilla Adaptativa y Tarjetas de Comida
+   ========================================================================== */
+
+/* 1. La Grilla: Distribuye las tarjetas automáticamente según el espacio libre */
+#contenedor-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem; /* Separación pareja entre tarjetas */
+    margin-top: 1rem;
+}
+
+/* 2. Estructura de la Tarjeta Individual */
+.card-producto {
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden; /* Corta la imagen si sobresale de las esquinas curvas */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column; /* Apila el contenido verticalmente */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Efecto de elevación sutil al pasar el mouse por encima */
+.card-producto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Imagen de la comida */
+.card-producto img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover; /* Recorta la imagen de forma armónica sin deformarla */
+    background-color: #f1f5f9;
+}
+
+/* Contenedor interno de los datos (para que tenga márgenes limpios) */
+.card-body {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Empuja el botón siempre hacia el fondo si las descripciones varían */
+}
+
+/* Categoría o etiqueta superior */
+.card-categoria {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: #ff6b35;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.5px;
+}
+
+/* Nombre del plato */
+.card-body h4 {
+    font-size: 1.15rem;
+    color: #2b303a;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+/* Descripción de los ingredientes */
+.card-body p {
+    font-size: 0.85rem;
+    color: #6c757d;
+    line-height: 1.4;
+    margin-bottom: 1.25rem;
+}
+
+/* Bloque inferior: Precio y Botón alineados */
+.card-footer-precio {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto; /* Alínea esta fila siempre abajo de todo */
+}
+
+/* El precio destacado */
+.card-precio {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #2e7d32; /* Verde esmeralda para destacar el valor comercial */
+}
+
+/* Botón interactivo "Agregar" */
+.btn-agregar-carrito {
+    background-color: #ff6b35;
+    color: #ffffff;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-family: inherit;
+    font-size: 0.88rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-agregar-carrito:hover {
+    background-color: #e05a2b;
+}
+
+/* ==========================================================================
+   FoodStore - Catálogo Paso 3: Acople Exacto con las clases del TS
+   ========================================================================== */
+
+/* 1. La Grilla: Distribuye las tarjetas en columnas adaptativas */
+#contenedor-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+    width: 100%;
+}
+
+/* 2. Estructura de la Tarjeta Individual (<article class="card-producto">) */
+.card-producto {
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden; /* Redondea las esquinas superiores de la imagen */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-producto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* La Imagen inyectada por tu TS */
+.card-producto img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    background-color: #f1f5f9;
+}
+
+/* 3. El contenedor de los textos (<div class="info"> en tu TS) */
+.card-producto .info {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Empuja los botones al fondo de forma pareja */
+}
+
+/* Título de la comida (<h3> en tu TS) */
+.card-producto .info h3 {
+    font-size: 1.15rem;
+    color: #2b303a;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+/* Descripción (<p class="desc"> en tu TS) */
+.card-producto .info .desc {
+    font-size: 0.85rem;
+    color: #6c757d;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+}
+
+/* Bloque de Precio (<p class="precio"> en tu TS) */
+.card-producto .info .precio {
+    font-size: 1rem;
+    color: #2b303a;
+    margin-bottom: 0.4rem;
+}
+
+/* El precio resaltado (<b> en tu TS) */
+.card-producto .info .precio b {
+    font-size: 1.25rem;
+    color: #2e7d32; /* Verde destacado */
+}
+
+/* Bloque de Stock (<p class="stock"> en tu TS) */
+.card-producto .info .stock {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+    display: inline-block;
+}
+
+/* Variaciones de Stock (clases inyectadas dinámicamente) */
+.card-producto .info .stock.con-stock {
+    color: #00bfa5; /* Verde esmeralda */
+}
+
+/* Si se queda sin unidades */
+.card-producto .info .stock.sin-stock {
+    color: #d32f2f; /* Rojo opaco */
+}
+
+/* 4. Barra de acciones inferiores (<div class="acciones"> en tu TS) */
+.card-producto .info .acciones {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: auto; /* Fuerza a alinearse abajo del todo */
+}
+
+/* Botón Ver Detalles (.btn-detalles) */
+.card-producto .info .acciones .btn-detalles {
+    flex: 1;
+    background-color: #f1f5f9;
+    color: #2b303a;
+    border: none;
+    padding: 0.6rem;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.card-producto .info .acciones .btn-detalles:hover {
+    background-color: #e2e8f0;
+}
+
+/* Botón Agregar al carrito (.btn-agregar) */
+.card-producto .info .acciones .btn-agregar {
+    flex: 1.2;
+    background-color: #ff6b35; /* Naranja corporativo */
+    color: #ffffff;
+    border: none;
+    padding: 0.6rem;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.card-producto .info .acciones .btn-agregar:hover {
+    background-color: #e05a2b;
+}
+
+/* Estilo para el botón deshabilitado cuando no hay stock */
+.card-producto .info .acciones .btn-agregar:disabled {
+    background-color: #cbd5e1;
+    color: #94a3b8;
+    cursor: not-allowed;
+}

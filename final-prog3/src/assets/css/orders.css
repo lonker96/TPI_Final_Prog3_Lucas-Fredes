@@ -1,0 +1,281 @@
+/* ==========================================================================
+   VISTA DE MIS PEDIDOS & MODAL DE DETALLES
+   ========================================================================== */
+
+.contenedor-pedidos {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.contenedor-pedidos h2 {
+    font-size: 2rem;
+    color: #1e293b;
+    margin-bottom: 8px;
+}
+
+.contenedor-pedidos .subtitulo {
+    color: #64748b;
+    font-size: 1rem;
+    margin-bottom: 24px;
+}
+
+/* Tabla de Pedidos */
+.tabla-contenedor {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    overflow-x: auto;
+    border: 1px solid #e2e8f0;
+}
+
+.pedidos-tabla {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.95rem;
+}
+
+.pedidos-tabla th {
+    background-color: #f8fafc;
+    color: #475569;
+    font-weight: 600;
+    padding: 16px;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.pedidos-tabla td {
+    padding: 16px;
+    border-bottom: 1px solid #e2e8f0;
+    color: #334155;
+    vertical-align: middle;
+}
+
+.fila-pedido-clicable {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.fila-pedido-clicable:hover {
+    background-color: #f1f5f9;
+}
+
+.col-productos {
+    line-height: 1.4;
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+.pedidos-tabla .precio {
+    color: #1e293b;
+    font-weight: 700;
+}
+
+/* Badges de Estado */
+.badge-estado {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-align: center;
+}
+
+.estado-pendiente {
+    background-color: #fef3c7;
+    color: #d97706;
+}
+
+.estado-entregado {
+    background-color: #dcfce7;
+    color: #15803d;
+}
+
+.estado-cancelado {
+    background-color: #fee2e2;
+    color: #b91c1c;
+}
+
+/* Botones de Acción */
+.btn-ver-detalle {
+    background-color: #f1f5f9;
+    color: #475569;
+    border: 1px solid #cbd5e1;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-ver-detalle:hover {
+    background-color: #ff6b35;
+    color: #ffffff;
+    border-color: #ff6b35;
+}
+
+/* Estado sin Pedidos */
+.sin-pedidos {
+    text-align: center;
+    padding: 48px 24px;
+    color: #64748b;
+}
+
+.sin-pedidos p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+/* Estilos de Ventana Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.hidden {
+    display: none;
+}
+
+.modal-contenido {
+    background-color: #ffffff;
+    width: 90%;
+    max-width: 550px;
+    border-radius: 16px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+    animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-header {
+    background-color: #f8fafc;
+    padding: 16px 24px;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    font-size: 1.25rem;
+    color: #1e293b;
+    margin: 0;
+}
+
+.modal-header h3 span {
+    color: #64748b;
+    font-weight: 400;
+}
+
+.btn-cerrar {
+    background: none;
+    border: none;
+    font-size: 1.75rem;
+    color: #94a3b8;
+    cursor: pointer;
+    line-height: 1;
+    padding: 4px;
+    transition: color 0.2s;
+}
+
+.btn-cerrar:hover {
+    color: #1e293b;
+}
+
+.modal-body {
+    padding: 24px;
+    max-height: 75vh;
+    overflow-y: auto;
+}
+
+/* Alerta de Estado del Modal */
+.modal-estado-alerta {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 16px;
+    border-radius: 10px;
+    margin-bottom: 24px;
+}
+
+.modal-icono {
+    font-size: 1.75rem;
+    line-height: 1;
+}
+
+.modal-mensaje-estado {
+    margin: 6px 0 0 0;
+    font-size: 0.9rem;
+    color: #475569;
+}
+
+/* Secciones Internas del Modal */
+.modal-seccion {
+    margin-bottom: 24px;
+}
+
+.modal-seccion h4 {
+    font-size: 0.95rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0 0 12px 0;
+    border-bottom: 1px dashed #e2e8f0;
+    padding-bottom: 6px;
+}
+
+.modal-seccion p {
+    margin: 6px 0;
+    font-size: 0.95rem;
+    color: #334155;
+}
+
+/* Filas de Productos e Importes */
+.modal-producto-fila, .modal-costo-fila {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.95rem;
+    padding: 6px 0;
+    color: #334155;
+}
+
+.modal-producto-fila b {
+    color: #64748b;
+    font-weight: 500;
+    margin-left: 4px;
+}
+
+.desglose-costos .modal-costo-fila {
+    color: #475569;
+}
+
+.total-resaltado {
+    border-top: 2px solid #e2e8f0;
+    margin-top: 8px;
+    padding-top: 12px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1e293b !important;
+}
+
+.total-resaltado span:last-child {
+    color: #ff6b35; /* El color naranja insignia de la app */
+}

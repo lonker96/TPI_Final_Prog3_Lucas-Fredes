@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Producto</title>
+    <link rel="stylesheet" href="/src/style.css">
+    <link rel="stylesheet" href="/src/assets/css/detalle.css">
+</head>
+<body>
+    <header>
+        <h1>FoodStore</h1>
+        <div class="header-nav">
+            <a href="/src/pages/store/cart/cart.html" id="link-carrito">Carrito
+                <span id="carrito-count" class="badge">0</span>
+            </a>
+            <a href="/src/pages/store/home.html" id="link-catalogo">Catálogo</a>
+        </div>
+    </header>
+
+    <main class="detail-container">
+        <div class="volver-container">
+            <button id="btn-volver" class="btn-secundario">← Volver al Catálogo</button>
+        </div>
+
+        <section id="detalle-producto" class="producto-detalle-grid">
+            <p>Cargando detalles del producto...</p>
+        </section>
+    </main>
+
+    <script type="module" src="./productDetail.ts"></script>
+</body>
+</html>

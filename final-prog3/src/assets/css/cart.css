@@ -1,0 +1,290 @@
+/* ==========================================================================
+   FoodStore - Carrito Paso 1: Grid de Pantalla y Tarjetas de ítems
+   ========================================================================== */
+
+/* 1. Título principal "Tu Pedido" */
+body > div > h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-main, #2b303a);
+    margin: 2rem 2.5rem 1rem 2.5rem;
+}
+
+/* 2. Distribución de columnas principales */
+.carrito-layaout {
+    display: flex;
+    gap: 2rem;
+    padding: 0 2.5rem 2.5rem 2.5rem;
+    align-items: flex-start; /* Evita que el panel lateral se estire hacia abajo */
+}
+
+/* Columna izquierda: listado de productos */
+.lista-items {
+    flex: 1; /* Ocupa el mayor espacio disponible */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* 3. Estilizado de cada ítem del carrito (inyectado por tu TS) */
+.item-carrito {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+}
+
+.card-carrito {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    gap: 1.5rem;
+}
+
+/* Foto miniatura del plato */
+.card-carrito img {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    object-fit: cover;
+    background-color: #f1f5f9;
+}
+
+/* Textos: Título y subtotal */
+.card-carrito .detalles {
+    flex: 1; /* Absorbe el espacio del medio */
+}
+
+.card-carrito .detalles h4 {
+    font-size: 1.1rem;
+    color: #2b303a;
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+}
+
+.card-carrito .detalles p {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.card-carrito .detalles b {
+    color: #ff6b35; /* Precio parcial en naranja */
+    font-size: 1rem;
+}
+
+/* 4. Selector de cantidades (- 1 +) */
+.selector-cantidad {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background-color: #f8fafc;
+    padding: 0.4rem 0.75rem;
+    border-radius: 20px;
+    border: 1px solid #edf2f7;
+}
+
+.btn-cantidad {
+    background: none;
+    border: none;
+    color: #2b303a;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+}
+
+.btn-cantidad:hover {
+    color: #ff6b35;
+}
+
+.selector-cantidad span {
+    font-weight: 600;
+    font-size: 0.95rem;
+    min-width: 15px;
+    text-align: center;
+}
+
+/* 5. Botón de remover fila completa */
+.btn-eliminar-todo {
+    background: none;
+    border: none;
+    color: #d32f2f;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: opacity 0.2s;
+}
+
+.btn-eliminar-todo:hover {
+    text-decoration: underline;
+    opacity: 0.8;
+}
+
+/* Mensaje cuando el array está en 0 */
+.carrito-vacio {
+    background-color: #ffffff;
+    padding: 3rem;
+    border-radius: 12px;
+    text-align: center;
+    color: #6c757d;
+    font-size: 1.1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+/* ==========================================================================
+   FoodStore - Carrito Paso 2: Tarjeta de Resumen y Formulario de Entrega
+   ========================================================================== */
+
+/* 1. Contenedor del panel lateral (Resumen de Compra) */
+.resumen-carrito {
+    width: 380px; /* Ancho fijo ideal para que no tape la lista */
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 1.75rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.resumen-carrito h3 {
+    font-size: 1.25rem;
+    color: #2b303a;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    border-bottom: 1px solid #edf2f7;
+    padding-bottom: 0.75rem;
+}
+
+/* 2. Desglose de precios (Filas del Subtotal, Envío y Total) */
+.resumen-detalles {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.resumen-detalles .fila {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.95rem;
+    color: #6c757d;
+}
+
+/* Fila destacada del Total Final */
+.resumen-detalles .fila-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.5rem;
+    padding-top: 0.75rem;
+    border-top: 2px dashed #edf2f7; /* Línea discontinua estilo ticket */
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #2b303a;
+}
+
+.resumen-detalles .total-numero {
+    color: #2e7d32; /* El total final resaltado en verde */
+    font-size: 1.35rem;
+}
+
+/* 3. Formulario de Datos de Entrega */
+.form-checkout {
+    border-top: 1px solid #edf2f7;
+    padding-top: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-checkout h4 {
+    font-size: 1rem;
+    color: #2b303a;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/* Cada grupo de Label + Input */
+.form-checkout .campo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.form-checkout .campo label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #4a5568;
+    margin-bottom: 0.4rem;
+}
+
+/* Estilos homogéneos para Inputs y Selects */
+.form-checkout .campo input,
+.form-checkout .campo select {
+    padding: 0.65rem 0.85rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    background-color: #f8fafc;
+    transition: all 0.2s ease;
+}
+
+.form-checkout .campo input:focus,
+.form-checkout .campo select:focus {
+    outline: none;
+    border-color: #ff6b35;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.12);
+}
+
+/* 4. Botones de acción inferiores */
+.resumen-acciones {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: auto;
+}
+
+/* Botón Finalizar Compra (.btn-primario) */
+.resumen-acciones .btn-primario {
+    background-color: #ff6b35; /* Naranja corporativo */
+    color: #ffffff;
+    border: none;
+    padding: 0.85rem;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    width: 100%;
+}
+
+.resumen-acciones .btn-primario:hover {
+    background-color: #e05a2b;
+}
+
+/* Botón Vaciar Carrito (.btn-secundario) */
+.resumen-acciones .btn-secundario {
+    background: none;
+    border: 1px solid #cbd5e1;
+    color: #64748b;
+    padding: 0.7rem;
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 100%;
+}
+
+.resumen-acciones .btn-secundario:hover {
+    background-color: #f1f5f9;
+    color: #d32f2f;
+    border-color: #f87171;
+}

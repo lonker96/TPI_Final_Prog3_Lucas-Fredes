@@ -1,0 +1,125 @@
+/* ==========================================================================
+   FoodStore - Registro: Estructura Base (Idéntica a Login)
+   ========================================================================== */
+
+/* 1. Fondo naranja pleno para toda la pantalla */
+body {
+    background: #ff6b35; 
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* 2. Tarjeta blanca idéntica en tamaño, padding y sombras */
+.container {
+    background-color: #ffffff;
+    padding: 3rem 2rem;
+    border-radius: 16px; 
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); 
+    width: 100%;
+    max-width: 400px; 
+}
+
+/* 3. Organización interna vertical */
+.registro-form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ==========================================================================
+   FoodStore - Registro: Elementos Internos
+   ========================================================================== */
+
+/* Título principal centrado */
+.registro-form h1 {
+    color: #1e293b;
+    text-align: center;
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 2rem;
+}
+
+/* Etiquetas de los campos */
+.registro-form label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #475569;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Campos de entrada de texto */
+.registro-form input {
+    padding: 0.85rem 1rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: #334155;
+    background-color: #f8fafc;
+    margin-bottom: 1.25rem;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+/* Efecto focus al escribir */
+.registro-form input:focus {
+    border-color: #ff6b35;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.15);
+}
+
+/* Placeholders */
+.registro-form input::placeholder {
+    color: #94a3b8;
+}
+
+/* ==========================================================================
+   FoodStore - Registro: Botón y Enlace Inferior
+   ========================================================================== */
+
+/* Botón de Registro Naranja */
+.registro-form button[type="submit"] {
+    background-color: #ff6b35;
+    color: #ffffff;
+    border: none;
+    padding: 0.9rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 1rem;
+    margin-bottom: 0; /* Reseteado para usar el margen del texto inferior */
+    letter-spacing: 0.5px;
+    transition: background-color 0.2s ease;
+}
+
+/* Hover del botón */
+.registro-form button[type="submit"]:hover {
+    background-color: #e05a2b;
+}
+
+/* Texto de redirección inferior */
+.registro-form p {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.88rem;
+    color: #6c757d;
+}
+
+/* Enlace a Iniciar Sesión */
+.registro-form p a {
+    color: #ff6b35;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.registro-form p a:hover {
+    color: #e05a2b;
+    text-decoration: underline;
+}

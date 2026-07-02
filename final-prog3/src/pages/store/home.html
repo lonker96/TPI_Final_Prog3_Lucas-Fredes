@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogo</title>
+    <link rel="stylesheet" href="/src/assets/css/store.css">
+    <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+    <header>
+        <h1>FoodStore</h1>
+        <div class="header-nav">
+        <a href="/src/pages/store/cart/cart.html" id="link-carrito">Carrito
+            <span id="carrito-count" class="badge">0</span>
+        </a>
+        <a href="/src/pages/store/home.html" id="link-catalogo">Catalogo</a>
+        <a href="/src/pages/client/orders/orders.html">Mis Pedidos</a>
+        </div>
+    </header>
+
+    
+    <div class="layaout-container">
+        <aside class="sidebar">
+            <nav id="menu-categorias">
+                <h3>Categorias</h3>
+                <button class="btn-filtro active" data-categoria="todos">Todos los productos</button>
+                <button class="btn-filtro" data-categoria="Pizzas">Pizzas</button>
+                <button class="btn-filtro" data-categoria="Hamburguesas">Hamburguesas</button>
+                <button class="btn-filtro" data-categoria="Bebidas">Bebidas</button>
+                <button class="btn-filtro" data-categoria="Empanadas">Empanadas</button> 
+                <button class="btn-filtro" data-categoria="Papas Fritas">Papas Fritas</button>                
+            </nav>
+        </aside>
+        <main class="main-content">
+            <div class="busqueda-container">
+                <input type="text" id="input-busqueda" placeholder="Buscar Productos...">
+
+                <select id="select-orden">
+                    <option value="predeterminado">Ordenar por...</option>
+                    <option value="nombre-asc">Nombre (A-Z)</option>
+                    <option value="nombre-desc">Nombre (Z-A)</option>
+                    <option value="precio-asc">Precio (Menor a Mayor)</option>
+                    <option value="precio-desc">Precio (Mayor a Menor)</option>
+                </select>
+            </div>
+
+            <p id="contador-productos" class="contador-texto">Se encontraron 0 productos.</p>
+            
+            <h2>Productos</h2>
+            <section id="contenedor-productos"></section>
+        </main>
+    </div>  
+    <script type="module" src="./home.ts"></script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodStore - Panel de Control Administrativo</title>
+    <link rel="stylesheet" href="/src/style.css">
+    <link rel="stylesheet" href="/src/assets/css/admin.css">
+</head>
+<body>
+    <header>
+        <h1 class="logo">FoodStore Panel - ADMIN</h1>
+        <div class="header-nav">
+            <button id="logoutButton" class="btn-logout">Cerrar Sesión</button>
+        </div>
+    </header>
+
+    <div class="layout-container admin-dashboard">
+        
+        <aside class="sidebar-navigation">
+            <div class="admin-profile">
+                <span class="admin-avatar">👤</span>
+                <div class="admin-info">
+                    <h4>Lucas</h4>
+                    <small>Administrador</small>
+                </div>
+            </div>
+            
+            <nav class="nav-menu">
+                <button class="nav-item active" data-target="sec-dashboard">
+                    <span class="icon">📊</span> Dashboard
+                </button>
+                <button class="nav-item" data-target="sec-pedidos">
+                    <span class="icon">🛍️</span> Pedidos
+                </button>
+                <button class="nav-item" data-target="sec-productos">
+                    <span class="icon">🍔</span> Productos
+                </button>
+                <button class="nav-item" data-target="sec-categorias">
+                    <span class="icon">📁</span> Categorías
+                </button>
+            </nav>
+
+            <hr class="nav-divider">
+
+            <button id="btn-abrir-alta" class="btn-primario btn-sidebar-alta">
+                ➕ Nuevo Producto
+            </button>
+        </aside>
+
+        <main class="main-content">
+            
+            <section id="sec-dashboard" class="admin-section">
+                <h2>Panel de Administración</h2>
+                <div class="dashboard-stats">
+                    <div class="tarjeta-stat gradiente-categorias">
+                        <h4>Categorías</h4>
+                        <p id="stat-categorias" class="stat-numero">0</p>
+                    </div>
+                    <div class="tarjeta-stat gradiente-productos">
+                        <h4>Productos</h4>
+                        <p id="stat-productos" class="stat-numero">0</p>
+                    </div>
+                    <div class="tarjeta-stat gradiente-pedidos">
+                        <h4>Pedidos</h4>
+                        <p id="stat-pedidos" class="stat-numero">0</p>
+                    </div>
+                    <div class="tarjeta-stat gradiente-disponibles">
+                        <h4>Disponibles</h4>
+                        <p id="stat-disponibles" class="stat-numero">0</p>
+                    </div>
+                </div>
+
+                <div class="dashboard-resumen">
+                    <h3 class="resumen-titulo">
+                        📊 Resumen Rápido
+                    </h3>
+                    
+                    <div class="resumen-grid">
+                        <div class="tarjeta-mini ingresos">
+                            <small class="tarjeta-mini-label">💰 Ingresos Totales</small>
+                            <b id="stat-ingresos" class="tarjeta-mini-valor">$0</b>
+                        </div>
+
+                        <div class="tarjeta-mini pendientes">
+                            <small class="tarjeta-mini-label">⏳ Pedidos Pendientes</small>
+                            <b id="resumen-pendientes" class="tarjeta-mini-valor">0</b>
+                        </div>
+
+                        <div class="tarjeta-mini entregados">
+                            <small class="tarjeta-mini-label">✅ Entregados</small>
+                            <b id="resumen-entregados" class="tarjeta-mini-valor">0</b>
+                        </div>
+
+                        <div class="tarjeta-mini cancelados">
+                            <small class="tarjeta-mini-label">❌ Cancelados</small>
+                            <b id="resumen-cancelados" class="tarjeta-mini-valor">0</b>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="sec-pedidos" class="admin-section d-none">
+                <h2>Gestión de Pedidos</h2>
+                <div class="tabla-responsiva">
+                    <table class="tabla-admin">
+                        <thead>
+                            <tr>
+                                <th>ID Pedido</th>
+                                <th>Fecha</th>
+                                <th>Cliente</th>
+                                <th>Total</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla-pedidos-admin-body"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="sec-productos" class="admin-section d-none">
+                <h2>Gestión de Productos</h2>
+                <div class="tabla-responsiva">
+                    <table class="tabla-admin">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Producto</th>
+                                <th>Precio</th>
+                                <th>Stock</th>
+                                <th>Estado / Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla-productos-body"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="sec-categorias" class="admin-section d-none">
+                <h2>Gestión de Categorías</h2>
+                <div class="tabla-responsiva">
+                    <table class="tabla-admin">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Descripción</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla-categorias-body">
+                            </tbody>
+                    </table>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <div id="modal-alta-producto" class="modal-container d-none">
+        <div class="modal-content sidebar">
+            <div class="modal-header">
+                <h3>Nuevo Producto</h3>
+                <button id="btn-cerrar-alta" class="btn-close">×</button>
+            </div>
+            <form id="form-nuevo-producto">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" required placeholder="Ej. Pizza Fugazzeta">
+
+                <label for="descripcion">Descripción:</label>
+                <textarea id="descripcion" required placeholder="Detalles..."></textarea>
+                
+                <label for="precio">Precio ($):</label>
+                <input type="number" id="precio" min="1" required placeholder="1200">
+
+                <label for="stock">Stock Inicial:</label>
+                <input type="number" id="stock" min="0" required placeholder="20">
+
+                <label for="categoria">Categoría Principal:</label>
+                <select id="categoria" required>
+                    <option value="Pizzas">Pizzas</option>
+                    <option value="Hamburguesas">Hamburguesas</option>
+                    <option value="Bebidas">Bebidas</option>
+                    <option value="Empanadas">Empanadas</option>
+                    <option value="Papas Fritas">Papas Fritas</option>
+                </select>
+
+                <button type="submit" class="btn-primario">Guardar Producto</button>
+            </form>
+        </div>
+    </div>
+
+    <script type="module" src="./home.js"></script>
+</body>
+</html>

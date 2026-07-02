@@ -1,0 +1,133 @@
+/* ==========================================================================
+   FoodStore - Login Paso 1: Estructura Base
+   ========================================================================== */
+
+/* 1. Modificamos el body de la página para que sea un contenedor flexible */
+body {
+    background: #ff6b35; /* El color naranja liso de la referencia */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+/* 2. Diseñamos la tarjeta blanca (.container en tu HTML) */
+.container {
+    background-color: #ffffff;
+    padding: 3rem 2rem;
+    border-radius: 16px; /* Bordes redondeados sutiles */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Sombra suave para darle profundidad */
+    width: 100%;
+    max-width: 400px; /* Evita que se estire en pantallas grandes */
+}
+
+/* 3. Forzamos a que los elementos dentro del formulario se apilen verticalmente */
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+/* ==========================================================================
+   FoodStore - Login Paso 2: Organización Interna e Inputs
+   ========================================================================== */
+
+/* 1. Centramos los encabezados principales dentro de la tarjeta */
+.login-form h1 {
+    color: #ff6b35; /* El color naranja identificatorio de la marca */
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+    text-align: center;
+}
+
+.login-form h2 {
+    color: #2b303a;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 2rem; /* Espacio generoso antes de empezar los campos */
+    text-align: center;
+}
+
+/* 2. Damos formato a las etiquetas (Email y Contraseña) */
+.login-form label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #2b303a;
+    margin-bottom: 0.4rem; /* Separación sutil respecto a su propio input abajo */
+    margin-top: 1rem;     /* Distancia con el elemento de arriba */
+}
+
+/* 3. Estilizado completo de los cuadros de entrada de texto */
+.login-form input {
+    width: 100%;          /* Ocupan todo el ancho de la tarjeta */
+    padding: 0.75rem 1rem;
+    border: 1px solid #e2e8f0; /* Borde gris muy suave */
+    border-radius: 8px;   /* Esquinas sutilmente redondeadas */
+    font-family: inherit; /* Hereda la tipografía Poppins del style.css */
+    font-size: 0.95rem;
+    background-color: #f8fafc; /* Fondo grisáceo muy claro para que resalte al hacer foco */
+    transition: all 0.2s ease; /* Transición suave para cuando el usuario haga clic */
+}
+
+/* Efecto visual cuando el usuario hace clic para escribir */
+.login-form input:focus {
+    outline: none;
+    border-color: #ff6b35; /* El borde se vuelve naranja */
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.15); /* Brillo naranja tenue alrededor */
+}
+/* ==========================================================================
+   FoodStore - Login Paso 3: Botón y Enlaces Inferiores
+   ========================================================================== */
+
+/* 1. Transformamos por completo el botón gris aburrido */
+.login-form button[type="submit"] {
+    background-color: #ff6b35; /* El naranja corporativo */
+    color: #ffffff;            /* Letras blancas impecables */
+    border: none;              /* Sacamos el borde negro clásico */
+    padding: 0.9rem;          /* Le damos altura para que sea cómodo de cliquear */
+    font-size: 1rem;
+    font-weight: 600;          /* Letras un poco más gruesas */
+    border-radius: 8px;        /* Bordes redondeados haciendo juego con los inputs */
+    cursor: pointer;
+    margin-top: 1.8rem;        /* Lo separamos bien del campo contraseña */
+    letter-spacing: 0.5px;     /* Espaciado sutil entre las letras */
+    transition: background-color 0.2s ease; /* Efecto suave de color */
+}
+
+/* Cambio de color cuando el usuario pasa el mouse por arriba */
+.login-form button[type="submit"]:hover {
+    background-color: #e05a2b; /* Un naranja un toque más oscuro */
+}
+
+/* 2. Acomodamos el texto de registro al pie de la tarjeta */
+.login-form .registro {
+    text-align: center;
+    margin-top: 1.5rem;       /* Espaciado superior para que respire */
+    font-size: 0.88rem;
+    color: #6c757d;           /* Color gris sutil */
+}
+
+/* Estilo específico para el enlace azul subrayado feo */
+.login-form .registro a {
+    color: #ff6b35;           /* Lo pasamos a naranja */
+    text-decoration: none;    /* Le quitamos el subrayado tosco */
+    font-weight: 600;         /* Le damos firmeza al texto */
+    transition: color 0.2s;
+}
+
+/* Si pasa el mouse por arriba del link, se subraya sutilmente */
+.login-form .registro a:hover {
+    text-decoration: underline;
+}
+.cuenta-grid {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #64748b;
+}
+.cuenta-card {
+   font-size: 0.75rem; 
+   color: #334155;
+   margin-top: 0.5rem;
+}

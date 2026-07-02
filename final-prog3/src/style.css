@@ -1,0 +1,86 @@
+/* ==========================================================================
+   FoodStore - CSS Global & Reset de Sistema
+   ========================================================================== */
+
+/* Importamos la fuente moderna desde Google Fonts */
+
+/* 1. RESET GENERAL: Forzamos a todos los navegadores a medir las cajas igual */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 2. VARIABLES DE DISEÑO: Colores idénticos a tus maquetas */
+:root {
+    --primary: #ff6b35;         /* Naranja de tus botones principales */
+    --primary-hover: #e05a2b;   /* Naranja más oscuro al pasar el mouse */
+    --bg-global: #f4f6f9;       /* Gris muy claro de fondo general */
+    --bg-card: #ffffff;         /* Blanco puro para las tarjetas y formularios */
+    --text-main: #2b303a;       /* Gris oscuro para tipografía legible */
+    --text-muted: #6c757d;      /* Gris intermedio para aclaraciones */
+    --radius-md: 12px;          /* Esquinas suavizadas para tus contenedores */
+    --radius-lg: 20px;          /* Esquinas para la tarjeta de Login */
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08); /* Sombra suave para las estructuras */
+}
+
+/* 3. CONFIGURACIÓN DEL CUERPO BASE */
+html, body {
+    width: 100%;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-global);
+    color: var(--text-main);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* 4. COMPONENTE COMPARTIDO: Estilo de los headers de la App */
+header {
+    background-color: var(--bg-card);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+header .logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.header-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.header-nav a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.header-nav a:hover {
+    color: var(--primary);
+}
+
+/* 5. BOTONES ESTÁNDAR */
+.btn-logout {
+    background-color: #e9ecef;
+    color: var(--text-main);
+    border: none;
+    padding: 0.5rem 1.2rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-logout:hover {
+    background-color: #dee2e6;
+    color: #d32f2f;
+}
